@@ -39,42 +39,54 @@ function setNextScene(e) {
 const story = [
     {
         header: "Welcome, Adventurer",
-        content: "some cool story stuff",
+        content: `You are a knight who has been unjustly imprisoned by the evil wizard Maglarovich! Your cell is tiny, dark, foul-smelling, and worst of all, quite dank! What do you do?`,
         choices: [
-            {text: "choice 1", nextIdx: 1},
-            {text: "choice 2", nextIdx: 2}
+            {text: "Use your natural strength to bust out!", nextIdx: 1},
+            {text: "Dig your way out with the spoon they gave you!", nextIdx: 2}
         ]
     },
     { // story[0], choice 1
-        header: "Oh nooooo...",
-        content: "something happened!",
+        header: "You bust out!",
+        content: `You use your rippling muscles to bend the bars wide enough to simply walk out of your cell. But ho! A guard has seen you! He lets out a shout, and draws his sword before you. Unfortunately, he stands between you and the only exit.`,
         choices: [
-            {text: "choice 1", nextIdx: 3},
-            {text: "choice 2", nextIdx: 4}
+            {text: "Attack like a crazy person.", nextIdx: 3},
+            {text: "Try to intimidate him.", nextIdx: 4}
         ]
     },
     { // story[0], choice 2
-        header: "Yay!",
-        content: "something good happened!",
+        header: "What a chore!",
+        content: `For a solid two weeks, you slave away into the deep hours of the night. Chipping, chipping, chipping away at the tough stone behind your bed. It hardly seems like you've made any progress... A month later, just as you were ready to give up, you break through the outer wall- only to find that you're 75 feet above ground level.`,
         choices: [
-            {text: "choice 1", nextIdx: 5},
-            {text: "choice 2", nextIdx: 6}
+            {text: "Jump down", nextIdx: 5},
+            {text: "Make a rope out of bedsheets", nextIdx: 6}
         ]
     },
     { // story[1], choice 1
-        header: "Aww crap",
-        content: "something else happened!",
+        header: "Weelll...",
+        content: `You run at the guard, yelling like a crazy person. You see momentary fear in his eyes, before he steels himself, draws his sword, and runs you through with his blade. What did you think would happen?`,
         choices: [
-            {text: "choice 1", nextIdx: 7},
-            {text: "choice 2", nextIdx: 8}
+            {text: "Play again?", nextIdx: 0},
         ]
     },
     { // story[1], choice 2
-        header: "Let's goooo!",
-        content: "something else good happened!",
+        header: "How did that work?",
+        content: `You tell the guard that you were visited by some kind of demon, and learned all sorts of black magic. He scoffs, but there's a look of self-doubt in his body language. Emboldened, you begin chanting in a made-up language, spreading your hands wide as if you're summoning some kind of demon. The guard slowly begins to back away, and then runs away. You follow after him, chanting all the more, until he eventually leads you out, screaming and crying. You're free!`,
         choices: [
-            {text: "choice 1", nextIdx: 9},
-            {text: "choice 2", nextIdx: 10}
+            {text: "Play again?", nextIdx: 0},
+        ]
+    },
+    { // story[2], choice 1
+        header: "Oh, boy...",
+        content: "You jump down, and instantly die upon impact. What were you thinking?",
+        choices: [
+            {text: "Play Again?", nextIdx: 0}
+        ]
+    },
+    { // story[2], choice 2
+        header: "You win!",
+        content: `You didn't think it would work, but somehow your bedsheets are 75 feet long! You gently climb down and escape the dark wizard's tower.`,
+        choices: [
+            {text: "Play again?", nextIdx: 0}
         ]
     }
 ];
