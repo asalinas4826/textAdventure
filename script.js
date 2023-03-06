@@ -7,6 +7,7 @@ const choices = document.getElementById('choices');
 startButton.addEventListener('click', startGame);
 
 let storyIndex = 0;
+let restartButton;
 
 function startGame(e) {
     container.removeChild(startButton);
@@ -14,8 +15,11 @@ function startGame(e) {
 }
 
 function setNextScene(e) {
-    if (e.target != startButton) {
+    if (e.target != startButton && e.target != restartButton) {
         storyIndex = e.target.dataset.nextIdx;
+    }
+    else if (e.target === restartButton) {
+        container.removeChild(restartButton);
     }
     
 
@@ -33,7 +37,18 @@ function setNextScene(e) {
         button.addEventListener('click', setNextScene);
         button.classList.add('btn');
         choices.appendChild(button);
-    });    
+    });
+
+    if (!story[storyIndex].playing) {
+        storyIndex = 0;
+
+        restartButton = document.createElement('button');
+        restartButton.innerText = "Play again?"
+        restartButton.classList.add('btn');
+        restartButton.classList.add('start-btn');
+        restartButton.addEventListener('click', setNextScene);
+        container.appendChild(restartButton);
+    }
 }
 
 const story = [
@@ -43,7 +58,8 @@ const story = [
         choices: [
             {text: "Use your natural strength to bust out!", nextIdx: 1},
             {text: "Dig your way out with the spoon they gave you!", nextIdx: 2}
-        ]
+        ],
+        playing: true
     },
     { // story[0], choice 1
         header: "You bust out!",
@@ -51,7 +67,8 @@ const story = [
         choices: [
             {text: "Attack like a crazy person.", nextIdx: 3},
             {text: "Try to intimidate him.", nextIdx: 4}
-        ]
+        ],
+        playing: true
     },
     { // story[0], choice 2
         header: "What a chore!",
@@ -59,34 +76,31 @@ const story = [
         choices: [
             {text: "Jump down", nextIdx: 5},
             {text: "Make a rope out of bedsheets", nextIdx: 6}
-        ]
+        ],
+        playing: true
     },
     { // story[1], choice 1
         header: "Weelll...",
         content: `You run at the guard, yelling like a crazy person. You see momentary fear in his eyes, before he steels himself, draws his sword, and runs you through with his blade. What did you think would happen?`,
-        choices: [
-            {text: "Play again?", nextIdx: 0},
-        ]
+        choices: [],
+        playing: false
     },
     { // story[1], choice 2
         header: "How did that work?",
         content: `You tell the guard that you were visited by some kind of demon, and learned all sorts of black magic. He scoffs, but there's a look of self-doubt in his body language. Emboldened, you begin chanting in a made-up language, spreading your hands wide as if you're summoning some kind of demon. The guard slowly begins to back away, and then runs away. You follow after him, chanting all the more, until he eventually leads you out, screaming and crying. You're free!`,
-        choices: [
-            {text: "Play again?", nextIdx: 0},
-        ]
+        choices: [],
+        playing: false
     },
     { // story[2], choice 1
         header: "Oh, boy...",
         content: "You jump down, and instantly die upon impact. What were you thinking?",
-        choices: [
-            {text: "Play Again?", nextIdx: 0}
-        ]
+        choices: [],
+        playing: false
     },
     { // story[2], choice 2
         header: "You win!",
         content: `You didn't think it would work, but somehow your bedsheets are 75 feet long! You gently climb down and escape the dark wizard's tower.`,
-        choices: [
-            {text: "Play again?", nextIdx: 0}
-        ]
+        choices: [],
+        playing: false
     }
 ];
